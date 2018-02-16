@@ -6,6 +6,7 @@ import {
   Segment as SemSegment,
   Button as SemButton,
   Form as SemForm,
+  Radio as SemRadio,
   Message as SemMessage,
   Transition as SemTransition,
   Header as SemHeader,
@@ -109,5 +110,6 @@ export {
   SemHeader as Header,
   SemConfirm as Confirm,
   SemModal as Modal,
-  AntSpin as Spin
+  AntSpin as Spin,
+  SemRadio as Radio
 }
