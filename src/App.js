@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route, Link, Redirect } from 'react-router-dom'
 import { Segment, Menu } from 'semantic-ui-react'
 
 import Teas from '/src/containers/Teas'
@@ -60,13 +60,12 @@ export default class App extends Component {
             ))}
           </Menu>
           <Switch>
-            <Route exact path="/" component={Teas} />
             <Route
               exact
               path="/teas"
               render={props => <Teas submit={this.onSubmit} />}
             />
-            <Route exact path="/vision" component={Vision} />
+            <Route path="/vision" component={Vision} />
             <Route
               exact
               path="/review"

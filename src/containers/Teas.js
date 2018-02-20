@@ -104,9 +104,6 @@ export default class Teas extends Component {
         <Button as={Link} to={'/vision'} onClick={this.onSubmit} type="primary">
           Submit
         </Button>
-        <Button as={Link} to={'/vision'}>
-          Submit
-        </Button>
       </div>
     )
   }
