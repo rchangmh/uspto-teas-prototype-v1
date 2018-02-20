@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Form } from 'semantic-ui-react'
 import { Input, Radio, Button } from 'antd'
+import { Link } from 'react-router-dom'
 
 export default class Teas extends Component {
   state = {
@@ -61,7 +62,7 @@ export default class Teas extends Component {
       ...this.state.fields,
       ...newObj
     }
-    console.log(returnObj)
+    this.props.submit(returnObj)
   }
 
   render() {
@@ -93,14 +94,19 @@ export default class Teas extends Component {
           </Radio.Group>
         </div>
         <div style={{ padding: '10px' }}>
-          <b>Entity Type: </b> <br />
+          <b>Entity Type: </b>
           <Radio.Group onChange={this.onChangeEntity}>
             {this.state.entityTypes.map(entity => (
               <Radio.Button value={entity}>{entity}</Radio.Button>
             ))}
           </Radio.Group>
         </div>
-        <Button onClick={this.onSubmit}>Submit</Button>
+        <Button as={Link} to={'/vision'} onClick={this.onSubmit} type="primary">
+          Submit
+        </Button>
+        <Button as={Link} to={'/vision'}>
+          Submit
+        </Button>
       </div>
     )
   }

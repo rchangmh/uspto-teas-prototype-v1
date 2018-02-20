@@ -9,7 +9,18 @@ import Review from '/src/containers/Review'
 export default class App extends Component {
   state = {
     activeItem: window.location.pathname,
-    links: ['teas', 'vision', 'review']
+    links: ['teas', 'vision', 'review'],
+    submitted: {
+      'Owner of Mark': 'test',
+      Representing: 'test',
+      'Entity Type': 'test',
+      'Internal Address': 'test',
+      'Street Address': 'test',
+      'Phone Number': 'test',
+      'Fax Number': 'test',
+      'Email Address': 'test',
+      'Website Address': 'test'
+    }
   }
 
   vp_style = {
@@ -26,6 +37,10 @@ export default class App extends Component {
     maxHeight: '100vh',
     overflow: 'auto',
     padding: '20px'
+  }
+
+  onSubmit = submittedValues => {
+    this.setState({ submitted: submittedValues })
   }
 
   render() {
@@ -46,9 +61,17 @@ export default class App extends Component {
           </Menu>
           <Switch>
             <Route exact path="/" component={Teas} />
-            <Route exact path="/teas" component={Teas} />
+            <Route
+              exact
+              path="/teas"
+              render={props => <Teas submit={this.onSubmit} />}
+            />
             <Route exact path="/vision" component={Vision} />
-            <Route exact path="/review" component={Review} />
+            <Route
+              exact
+              path="/review"
+              render={props => <Review values={this.state.submitted} />}
+            />
           </Switch>
         </Segment>
       </div>
