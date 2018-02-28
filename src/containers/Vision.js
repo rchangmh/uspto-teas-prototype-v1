@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { Upload, Icon, message } from 'antd'
 
 export default class Vision extends Component {
+  state = {
+    pictures: []
+  }
+
   props = {
     name: 'file',
     multiple: true,
@@ -20,6 +24,12 @@ export default class Vision extends Component {
     }
   }
 
+  componentDidMount() {
+    fetch('https://randomuser.me/api/?results=5')
+      .then(results => results.json())
+      .then(data => this.setState({ pictures: data.results }))
+  }
+
   render() {
     return (
       <div style={{ height: '200px' }}>
@@ -31,6 +41,14 @@ export default class Vision extends Component {
             Click or drag file to this area to upload
           </p>
         </Upload.Dragger>
+        {this.state.pictures.map(picture => {
+          return (
+            <div key={picture.results}>
+              <img src={picture.picture.medium} />
+            </div>
+          )
+        })}
+        }
       </div>
     )
   }
